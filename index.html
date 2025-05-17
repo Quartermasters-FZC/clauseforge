@@ -53,8 +53,14 @@
       margin-top: 1rem;
     }
 
-    .cta-button {
+    .cta-container {
       margin-top: 2rem;
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    .cta-button {
       padding: 0.8rem 2rem;
       background-color: var(--accent);
       color: var(--white);
@@ -68,6 +74,31 @@
     .cta-button:hover {
       background-color: var(--primary);
       transform: scale(1.05);
+    }
+
+    .scroll-button {
+      position: absolute;
+      bottom: 30px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: none;
+      border: 2px solid var(--accent);
+      border-radius: 50%;
+      width: 48px;
+      height: 48px;
+      cursor: pointer;
+      animation: bounce 2s infinite;
+    }
+
+    .scroll-button::before {
+      content: "↓";
+      color: var(--accent);
+      font-size: 1.5rem;
+    }
+
+    @keyframes bounce {
+      0%, 100% { transform: translate(-50%, 0); }
+      50% { transform: translate(-50%, 10px); }
     }
 
     canvas#bgCanvas {
@@ -112,24 +143,30 @@
 <header>
   <h1 class="hero-title">ClauseForge</h1>
   <p class="hero-subtitle">
-    Advanced Legal Intelligence – Designed, Engineered, and Deployed by Quartermasters FZC.
+    Clause-Level Agentic AI for Legal Intelligence – Designed and Developed by Quartermasters FZC.
   </p>
-  <button class="cta-button" onclick="window.location.href='https://www.quartermasters.me'">
-    Learn More
-  </button>
+  <div class="cta-container">
+    <button class="cta-button" onclick="window.location.href='https://www.quartermasters.me'">
+      Learn More
+    </button>
+    <button class="cta-button" onclick="window.location.href='https://github.com/Quartermasters-FZC/clauseforge'">
+      Visit GitHub Repository
+    </button>
+  </div>
+  <button class="scroll-button" onclick="document.querySelector('section').scrollIntoView({ behavior: 'smooth' })"></button>
 </header>
 
 <section>
   <h2 class="section-title">What is ClauseForge?</h2>
   <p class="section-content">
-    ClauseForge is an AI-powered system transforming how contracts are understood, negotiated, and de-risked. Built for startups, small businesses, and independent professionals, ClauseForge delivers clause-level insight, risk evaluation, and dispute forecasting—before you sign.
+    ClauseForge is an advanced Agentic AI system engineered to transform contract understanding, negotiation, and risk management. Tailored for startups, legal teams, and enterprises, it autonomously parses, classifies, and forecasts legal outcomes—empowering users with actionable insight before signing any agreement.
   </p>
 </section>
 
 <section>
   <h2 class="section-title">Behind the Build</h2>
   <p class="section-content">
-    ClauseForge is a proprietary deployment under contract for a U.S.-based client. The system is designed and engineered by Quartermasters FZC using advanced language models, document intelligence, and speech-based interaction layers—blending compliance with innovation.
+    ClauseForge is not a concept. It is a completed and evolving Agentic AI deployment engineered by Quartermasters FZC for a U.S.-based client. The platform integrates document intelligence, clause classification, real-time risk evaluation, and speech-based interaction into a single, self-activating framework.
   </p>
 </section>
 
