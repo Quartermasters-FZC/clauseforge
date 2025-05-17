@@ -1,0 +1,3 @@
+# ClauseForge Vision
+
+ClauseForge aims to democratize access to legal intelligence...

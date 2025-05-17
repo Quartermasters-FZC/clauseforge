@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>ClauseForge – Powered by Quartermasters</title>
+  <style>
+    :root {
+      --primary: #b7410e;
+      --secondary: #96a8a1;
+      --accent: #d17046;
+      --white: #ffffff;
+      --dark: #0f0f0f;
+    }
+
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(135deg, #121212, #1f1f1f);
+      color: var(--white);
+      overflow-x: hidden;
+    }
+
+    header {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      text-align: center;
+      z-index: 2;
+    }
+
+    .hero-title {
+      font-size: 3.5rem;
+      font-weight: 700;
+      background: linear-gradient(90deg, var(--primary), var(--accent));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      animation: pulseTitle 6s ease-in-out infinite;
+    }
+
+    @keyframes pulseTitle {
+      0%, 100% { letter-spacing: 1px; }
+      50% { letter-spacing: 4px; }
+    }
+
+    .hero-subtitle {
+      font-size: 1.3rem;
+      color: var(--secondary);
+      max-width: 600px;
+      margin-top: 1rem;
+    }
+
+    .cta-button {
+      margin-top: 2rem;
+      padding: 0.8rem 2rem;
+      background-color: var(--accent);
+      color: var(--white);
+      border: none;
+      border-radius: 8px;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: all 0.3s ease-in-out;
+    }
+
+    .cta-button:hover {
+      background-color: var(--primary);
+      transform: scale(1.05);
+    }
+
+    canvas#bgCanvas {
+      position: absolute;
+      top: 0;
+      left: 0;
+      z-index: 0;
+      width: 100vw;
+      height: 100vh;
+    }
+
+    section {
+      padding: 4rem 2rem;
+      max-width: 960px;
+      margin: auto;
+    }
+
+    .section-title {
+      font-size: 2rem;
+      color: var(--accent);
+      margin-bottom: 1rem;
+    }
+
+    .section-content {
+      font-size: 1.1rem;
+      color: var(--white);
+      line-height: 1.6;
+    }
+
+    footer {
+      background-color: #111;
+      padding: 1rem;
+      text-align: center;
+      color: var(--secondary);
+    }
+  </style>
+</head>
+<body>
+
+<canvas id="bgCanvas"></canvas>
+
+<header>
+  <h1 class="hero-title">ClauseForge</h1>
+  <p class="hero-subtitle">
+    Advanced Legal Intelligence – Designed, Engineered, and Deployed by Quartermasters FZC.
+  </p>
+  <button class="cta-button" onclick="window.location.href='https://www.quartermasters.me'">
+    Learn More
+  </button>
+</header>
+
+<section>
+  <h2 class="section-title">What is ClauseForge?</h2>
+  <p class="section-content">
+    ClauseForge is an AI-powered system transforming how contracts are understood, negotiated, and de-risked. Built for startups, small businesses, and independent professionals, ClauseForge delivers clause-level insight, risk evaluation, and dispute forecasting—before you sign.
+  </p>
+</section>
+
+<section>
+  <h2 class="section-title">Behind the Build</h2>
+  <p class="section-content">
+    ClauseForge is a proprietary deployment under contract for a U.S.-based client. The system is designed and engineered by Quartermasters FZC using advanced language models, document intelligence, and speech-based interaction layers—blending compliance with innovation.
+  </p>
+</section>
+
+<footer>
+  © 2025 Quartermasters FZC. All rights reserved.
+</footer>
+
+<script>
+  const canvas = document.getElementById('bgCanvas');
+  const ctx = canvas.getContext('2d');
+  canvas.width = window.innerWidth;
+  canvas.height = window.innerHeight;
+
+  let particlesArray;
+
+  function initParticles() {
+    particlesArray = [];
+    for (let i = 0; i < 120; i++) {
+      particlesArray.push({
+        x: Math.random() * canvas.width,
+        y: Math.random() * canvas.height,
+        size: Math.random() * 2 + 1,
+        speedX: Math.random() * 0.5 - 0.25,
+        speedY: Math.random() * 0.5 - 0.25
+      });
+    }
+  }
+
+  function animateParticles() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    particlesArray.forEach(p => {
+      p.x += p.speedX;
+      p.y += p.speedY;
+      if (p.x < 0 || p.x > canvas.width) p.speedX *= -1;
+      if (p.y < 0 || p.y > canvas.height) p.speedY *= -1;
+      ctx.beginPath();
+      ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
+      ctx.fillStyle = 'rgba(215, 112, 70, 0.7)';
+      ctx.fill();
+    });
+    requestAnimationFrame(animateParticles);
+  }
+
+  window.addEventListener('resize', () => {
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+    initParticles();
+  });
+
+  initParticles();
+  animateParticles();
+</script>
+
+</body>
+</html>
