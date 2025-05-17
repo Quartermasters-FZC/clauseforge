@@ -79,26 +79,26 @@
     .scroll-button {
       position: absolute;
       bottom: 30px;
-      left: 50%;
-      transform: translateX(-50%);
-      background: none;
-      border: 2px solid var(--accent);
-      border-radius: 50%;
-      width: 48px;
-      height: 48px;
+      font-size: 1rem;
+      background: transparent;
+      color: var(--secondary);
+      border: 2px solid var(--secondary);
+      padding: 0.5rem 1.5rem;
+      border-radius: 30px;
       cursor: pointer;
-      animation: bounce 2s infinite;
+      transition: all 0.4s ease;
+      z-index: 5;
+      animation: pulseScroll 2s infinite;
     }
 
-    .scroll-button::before {
-      content: "↓";
-      color: var(--accent);
-      font-size: 1.5rem;
+    .scroll-button:hover {
+      background-color: var(--secondary);
+      color: var(--dark);
     }
 
-    @keyframes bounce {
-      0%, 100% { transform: translate(-50%, 0); }
-      50% { transform: translate(-50%, 10px); }
+    @keyframes pulseScroll {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(10px); }
     }
 
     canvas#bgCanvas {
@@ -153,7 +153,7 @@
       Visit GitHub Repository
     </button>
   </div>
-  <button class="scroll-button" onclick="document.querySelector('section').scrollIntoView({ behavior: 'smooth' })"></button>
+  <button class="scroll-button" id="scrollBtn">Scroll Down</button>
 </header>
 
 <section>
@@ -218,6 +218,12 @@
 
   initParticles();
   animateParticles();
+
+  const scrollBtn = document.getElementById('scrollBtn');
+  scrollBtn.addEventListener('click', () => {
+    document.querySelector('section').scrollIntoView({ behavior: 'smooth' });
+    scrollBtn.style.display = 'none';
+  });
 </script>
 
 </body>
